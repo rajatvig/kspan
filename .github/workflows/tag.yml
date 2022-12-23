@@ -1,5 +1,5 @@
 ---
-name: Ko
+name: Build and Tag Image
 
 on:
   push:
