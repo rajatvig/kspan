@@ -1,3 +1,4 @@
+CONTROLLER_GEN = tools/bin/controller-gen
 
 KO_DOCKER_REPO ?= rajatvig/kspan
 
@@ -47,8 +48,6 @@ generate: $(CONTROLLER_GEN)
 # Build the docker image
 docker-build: test
 	env KO_DOCKER_REPO=$(KO_DOCKER_REPO) ko build --push=false
-
-CONTROLLER_GEN = tools/bin/controller-gen
 
 $(CONTROLLER_GEN): hack/tools/go.mod
 	cd hack/tools; go build -o $(abspath $@) sigs.k8s.io/controller-tools/cmd/controller-gen
