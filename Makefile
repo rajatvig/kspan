@@ -1,6 +1,6 @@
 CONTROLLER_GEN = tools/bin/controller-gen
 
-KO_DOCKER_REPO ?= rajatvig/kspan
+KO_DOCKER_REPO ?= ghcr.io/rajatvig/kspan
 
 all: manager
 

@@ -1,7 +1,7 @@
 ---
 name: Ko
 
-on: [push, pull_request, create]  # create is for tags
+on: [push, pull_request]
 
 jobs:
 
@@ -13,7 +13,7 @@ jobs:
       with:
         go-version: 1.19
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Lint
       uses: golangci/golangci-lint-action@v3
@@ -29,9 +29,3 @@ jobs:
 
     - name: Test
       run: make test
-
-    - name: Setup ko
-      uses: imjasonh/setup-ko@v0.6
-
-    - name: Publish Image
-      run: ko build -B

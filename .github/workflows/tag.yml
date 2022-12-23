@@ -1,0 +1,28 @@
+---
+name: Ko
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - uses: actions/checkout@v3
+
+    - name: Test
+      run: make tools/bin/controller-gen test
+
+    - name: Setup ko
+      uses: imjasonh/setup-ko@v0.6
+
+    - name: Publish Image
+      run: ko build -B --tags $GITHUB_REF_NAME
