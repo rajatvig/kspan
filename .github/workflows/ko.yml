@@ -30,7 +30,9 @@ jobs:
     - name: Test
       run: make test
 
-    - uses: imjasonh/setup-ko@v0.6
+    - name: Publish Image
+      uses: imjasonh/setup-ko@v0.6
       with:
         version: v0.11.2
-      run: ko build
+        
+    - run: ko build
