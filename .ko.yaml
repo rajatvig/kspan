@@ -4,3 +4,7 @@ builds:
   flags:
   # Flags taken from the Dockerfile
   - -a # force rebuilding of packages already up-to-date
+  ldflags:
+    - -s
+    - -w
+    - -extldflags "-static"

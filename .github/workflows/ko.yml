@@ -34,4 +34,4 @@ jobs:
       uses: imjasonh/setup-ko@v0.6
 
     - name: Publish Image
-      run: ko build
+      run: ko build -B
