@@ -1,6 +1,5 @@
 
-# Image URL to use all building/pushing image targets
-IMG ?= weaveworks/kspan:dev
+KO_DOCKER_REPO ?= rajatvig/kspan
 
 all: manager
 
@@ -47,11 +46,7 @@ generate: $(CONTROLLER_GEN)
 
 # Build the docker image
 docker-build: test
-	docker build . -t ${IMG}
-
-# Push the docker image
-docker-push: docker-build
-	docker push ${IMG}
+	env KO_DOCKER_REPO=$(KO_DOCKER_REPO) ko build --push=false
 
 CONTROLLER_GEN = tools/bin/controller-gen
 
